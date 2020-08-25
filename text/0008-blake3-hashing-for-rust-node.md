@@ -6,13 +6,13 @@ https://github.com/CasperLabs/ceps/pull/8
 
 [summary]: #summary
 
-Update project dependencies to include Blake3 hashing, reported to be much faster.
+Replace use of Blake2 in the Rust node with Blake3.
 
 ## Motivation
 
 [motivation]: #motivation
 
-It could reasonable to implement this as a project dependency replacing blake2b hashing because it could result in faster internal hashing, and thus a faster network.
+Use Blake3 hashing as it is faster in benchmarks, potentially resulting in an overall performce increase.
 
 ## Guide-level explanation
 
@@ -38,7 +38,6 @@ These test results were pulled straight from the Blake3 team's repo. Reported to
 
 [drawbacks]: #drawbacks
 
-Why should we *not* do this?
 Could break connected logic if the Bouncycastle library is too heavily relied upon. However it may not be an issue in the new Rust codebase if different dependencies are present.
 
 ## Rationale and alternatives
@@ -46,19 +45,3 @@ Could break connected logic if the Bouncycastle library is too heavily relied up
 [rationale-and-alternatives]: #rationale-and-alternatives
 
 Rationale speaks for itself I believe, anything that could speed up the network without causing a problem or risks creating a new vector of attack is a positive update.
-
-## Prior art
-
-[prior-art]: #prior-art
-
-
-## Unresolved questions
-
-[unresolved-questions]: #unresolved-questions
-
-
-## Future possibilities
-
-[future-possibilities]: #future-possibilities
-
-The reason this issue has been brought up is because of the recent Rust re-write of the node software, as Blake3 has been primarily implemented in Rust by the creators, assuming it would be ideal to address before the first release.
