@@ -14,6 +14,8 @@ Replace use of Blake2 in the Rust node with Blake3.
 
 Use the blake3 crate for hashing as it is faster in benchmarks than blake2, potentially resulting in an overall performance increase.
 
+Given the nature of the change, it would be ideal to address this topic before the first production release.
+
 ## Guide-level explanation
 
 [guide-level-explanation]: #guide-level-explanation
